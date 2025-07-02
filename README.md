@@ -1,1 +1,1 @@
-![Open in browser](jakobhinze.netlify.app)
+[Open in browser](https://jakobhinze.netlify.app)
