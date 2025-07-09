@@ -1,0 +1,52 @@
+---
+import { motion } from "framer-motion";
+import { GlassCard } from "./ui/glass-card";
+
+const {id, title, date, tags} = Astro.props;
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const postCategoryVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+console.log(id)
+---
+
+<motion.div
+    client:only="react"
+    className="space-y-6"
+    variants={containerVariants}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, margin: "-50px" 
+    }}
+    >
+    <motion.div variants={postCategoryVariants}>
+        <a href={`./blog/${id}`}>
+            <GlassCard client:only="react" className="p-4">
+                <h3 class="text-lg font-medium mb-3 text-center md:text-left flex items-center">
+                    {title}
+                </h3>
+                <div class="flex flex-wrap gap-2 justify-center md:justify-start">
+                    <!-- {tags.map((tag => (
+                    ))} -->
+                </div>
+            </GlassCard>
+        </a>
+    </motion.div>
+</motion.div>

@@ -1,0 +1,38 @@
+---
+import { app } from "../firebase/server";
+import { getFirestore } from "firebase-admin/firestore";
+import MotionWrapper from "./MotionWrapper";
+import BlogSectionPost from "./BlogSectionPost.astro";
+
+interface Post {
+    id: string;
+    title: string;
+    text: string;
+    date: string;
+    tags: Array<string>;
+}
+
+const db = getFirestore(app);
+const blogRef = db.collection("blog");
+const blogSnapshot = await blogRef.get();
+const posts = blogSnapshot.docs.map((doc) => ({
+  id: doc.id,
+  ...doc.data(),
+})) as Post[];
+console.log(posts[0].id)
+---
+<section id="blog" class="py-12 bg-gradient-to-b from-background to-muted/20">
+    <div class="container max-w-4xl mx-auto px-6 md:px-4">
+    <MotionWrapper client:only="react">
+        <h2 class="text-2xl font-bold mb-8 text-center md:text-left">
+            📖 Blog
+        </h2>
+    </MotionWrapper>
+        <ul>
+            {posts.map(post => (
+                <li><BlogSectionPost title={post.title} id={post.id} date={post.date} tags={post.tags}/></li>
+            ))}
+        </ul>
+    </div> 
+</section>
+

@@ -1,0 +1,48 @@
+---
+export const prerender = false;
+import Layout from "../../layouts/Layout.astro";
+import { app } from "../../firebase/server";
+import { getFirestore } from "firebase-admin/firestore";
+
+interface Post {
+  title: string;
+  date: string;
+  text: string;
+  tags: Array<String>;
+}
+
+const { id } = Astro.params;
+
+
+export async function getStaticPaths() {
+  const db1 = getFirestore(app);
+  const blogRef1 = db1.collection("blog");
+  const snapshot = await blogRef1.get();
+
+  const paths = snapshot.docs.map(doc => ({
+    params: { id: doc.id }
+  }));
+
+  return paths;
+}
+
+if (!id) {
+  return Astro.redirect("/404");
+}
+
+const db = getFirestore(app);
+const blogRef = db.collection("blog");
+const postSnapshot = await blogRef.doc(id).get();
+
+if (!postSnapshot.exists) {
+  return Astro.redirect("/404");
+}
+
+const post = postSnapshot.data() as Post;
+---
+
+<Layout>
+  <h1>{post.title}</h1>
+  <p>{post.date}</p>
+  <p>{post.text}</p>
+</Layout>

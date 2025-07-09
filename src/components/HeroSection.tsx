@@ -86,7 +86,7 @@ export default function HeroSection() {
                 🌟 GitHub
               </motion.a>
 
-              <motion.a
+              {/* <motion.a
                 href={personalInfo.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -96,7 +96,7 @@ export default function HeroSection() {
               >
                 <Linkedin className="h-4 w-4 mr-2" />
                 🔗 LinkedIn
-              </motion.a>
+              </motion.a>  */}
             </motion.div>
           </div>
 
@@ -109,7 +109,7 @@ export default function HeroSection() {
             <div className="relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
               <img
-                src="/profile.jpg"
+                src="/Me.jpg"
                 alt="Profile"
                 className="w-48 md:w-60 rounded-full relative ring-2 ring-purple-500/50"
                 style={{ objectFit: "cover" }}

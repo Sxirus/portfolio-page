@@ -10,7 +10,7 @@ export default function GlassHeader() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <header className="sticky z-50 w-full backdrop-blur-md backdrop-filter bg-background/70 dark:bg-background/40 border-b border-border/40 supports-[backdrop-filter]:bg-background/60">
+    <header className="fixed z-50 w-full backdrop-blur-md backdrop-filter bg-background/70 dark:bg-background/40 border-b border-border/40 supports-[backdrop-filter]:bg-background/60">
       <div className="container max-w-4xl mx-auto p-4 flex justify-between items-center">
         <motion.a
           className="flex items-center text-lg font-medium"
@@ -23,7 +23,7 @@ export default function GlassHeader() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-          {["experience", "skills", "projects", "awards", "education"].map(
+          {["experience", "skills", "projects", "education", "blog"].map(
             (item, index) => (
               <motion.a
                 key={item}
@@ -37,8 +37,8 @@ export default function GlassHeader() {
                 {item === "experience" && "💼 "}
                 {item === "skills" && "🛠️ "}
                 {item === "projects" && "🚀 "}
-                {item === "awards" && "🏆 "}
                 {item === "education" && "🎓 "}
+                {item === "blog" && "📖 "}
                 {item.charAt(0).toUpperCase() + item.slice(1)}
               </motion.a>
             )
@@ -71,7 +71,7 @@ export default function GlassHeader() {
             transition={{ duration: 0.3 }}
           >
             <nav className="flex flex-col space-y-4 text-sm font-medium">
-              {["experience", "skills", "projects", "awards", "education"].map(
+              {["experience", "skills", "projects", "education"].map(
                 (item, index) => (
                   <motion.a
                     key={item}
@@ -85,7 +85,6 @@ export default function GlassHeader() {
                     {item === "experience" && "💼 "}
                     {item === "skills" && "🛠️ "}
                     {item === "projects" && "🚀 "}
-                    {item === "awards" && "🏆 "}
                     {item === "education" && "🎓 "}
                     {item.charAt(0).toUpperCase() + item.slice(1)}
                   </motion.a>

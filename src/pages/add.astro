@@ -1,0 +1,16 @@
+---
+import Layout from "@/layouts/Layout.astro"
+---
+<Layout>
+    <form method="post" action="/api/blog">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title">
+        <label for="text">Text</label>
+        <input type="text" id="text" name="text">
+        <label for="text">Date</label>
+        <input type="text" id="date" name="date">
+        <label for="text">Tags</label>
+        <input type="text" id="tags" name="tags">
+        <button type="submit">add</button>
+    </form>
+</Layout>
