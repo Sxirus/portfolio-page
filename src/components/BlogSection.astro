@@ -12,8 +12,8 @@ interface Post {
     tags: Array<string>;
 }
 
-// const db = getFirestore(app);
-// const blogRef = db.collection("blog");
+const db = getFirestore(app);
+const blogRef = db.collection("blog");
 // const blogSnapshot = await blogRef.get();
 // const posts = blogSnapshot.docs.map((doc) => ({
 //   id: doc.id,
