@@ -1,5 +1,4 @@
 ---
-export const prerender = false;
 import Layout from "../../layouts/Layout.astro";
 import { app } from "../../firebase/server";
 import { getFirestore } from "firebase-admin/firestore";
@@ -12,19 +11,6 @@ interface Post {
 }
 
 const { id } = Astro.params;
-
-
-export async function getStaticPaths() {
-  const db1 = getFirestore(app);
-  const blogRef1 = db1.collection("blog");
-  const snapshot = await blogRef1.get();
-
-  const paths = snapshot.docs.map(doc => ({
-    params: { id: doc.id }
-  }));
-
-  return paths;
-}
 
 if (!id) {
   return Astro.redirect("/404");
