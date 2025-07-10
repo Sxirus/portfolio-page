@@ -12,14 +12,14 @@ interface Post {
     tags: Array<string>;
 }
 
-const db = getFirestore(app);
-const blogRef = db.collection("blog");
-const blogSnapshot = await blogRef.get();
-const posts = blogSnapshot.docs.map((doc) => ({
-  id: doc.id,
-  ...doc.data(),
-})) as Post[];
-console.log(posts[0].id)
+// const db = getFirestore(app);
+// const blogRef = db.collection("blog");
+// const blogSnapshot = await blogRef.get();
+// const posts = blogSnapshot.docs.map((doc) => ({
+//   id: doc.id,
+//   ...doc.data(),
+// })) as Post[];
+// console.log(posts[0].id)
 
 ---
 <section id="blog" class="py-12 bg-gradient-to-b from-background to-muted/20">
