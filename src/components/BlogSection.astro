@@ -14,12 +14,12 @@ interface Post {
 
 const db = getFirestore(app);
 const blogRef = db.collection("blog");
-// const blogSnapshot = await blogRef.get();
-// const posts = blogSnapshot.docs.map((doc) => ({
-//   id: doc.id,
-//   ...doc.data(),
-// })) as Post[];
-// console.log(posts[0].id)
+const blogSnapshot = await blogRef.get();
+const posts = blogSnapshot.docs.map((doc) => ({
+  id: doc.id,
+  ...doc.data(),
+})) as Post[];
+console.log(posts[0].id)
 
 ---
 <section id="blog" class="py-12 bg-gradient-to-b from-background to-muted/20">
@@ -33,9 +33,9 @@ const blogRef = db.collection("blog");
             <li>
                 Wo ist meine blog section
             </li>
-            <!-- {posts.map(post => (
+            {posts.map(post => (
                 <li><BlogSectionPost title={post.title} id={post.id} date={post.date} tags={post.tags}/></li>
-            ))} -->
+            ))}
         </ul>
     </div> 
 </section>
