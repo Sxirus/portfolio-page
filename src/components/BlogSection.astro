@@ -4,6 +4,8 @@ import { getFirestore } from "firebase-admin/firestore";
 import MotionWrapper from "./MotionWrapper";
 import BlogSectionPost from "./BlogSectionPost.astro";
 
+export const prerender = false;
+
 interface Post {
     id: string;
     title: string;
