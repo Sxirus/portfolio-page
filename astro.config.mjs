@@ -6,6 +6,8 @@ import react from "@astrojs/react";
 
 import netlify from "@astrojs/netlify";
 
+import auth from "auth-astro";
+
 // https://astro.build/config
 export default defineConfig({
   output: "server",
@@ -13,7 +15,7 @@ export default defineConfig({
       plugins: [tailwindcss()],
   },
 
-  integrations: [react()],
+  integrations: [react(), auth()],
   adapter: netlify({
     edgeMiddleware: true,
   })

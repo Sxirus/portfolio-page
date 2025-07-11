@@ -1,6 +1,7 @@
 ---
 import { motion } from "framer-motion";
 import { GlassCard } from "./ui/glass-card";
+import Tag from "./Tag.astro";
 
 const {id, title, date, tags} = Astro.props;
 
@@ -39,12 +40,14 @@ console.log(id)
     <motion.div variants={postCategoryVariants}>
         <a href={`./blog/${id}`}>
             <GlassCard client:only="react" className="p-4">
-                <h3 class="text-lg font-medium mb-3 text-center md:text-left flex items-center">
+                <h3 class="text-lg font-medium text-center md:text-left flex items-center">
                     {title}
                 </h3>
+                <p class="text-gray-300 mb-3 text-opacity-50">{date}</p>
                 <div class="flex flex-wrap gap-2 justify-center md:justify-start">
-                    <!-- {tags.map((tag => (
-                    ))} -->
+                  {tags.map((tag: string, index: number) => (
+                    <Tag key={index} tag={tag} index={index} />
+                  ))}
                 </div>
             </GlassCard>
         </a>

@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getSession } from 'auth-astro/server';
+const session = await getSession(Astro.request);
+
+if ("jakob.hinze@icloud.com" == (session?.user?.email)) {
+  return Astro.redirect("/add")
+}
+
+---
+<Layout>
+  <button id="login">Login with GitHub</button>
+  <button id="logout">Logout</button>
+  <p>{"jakob.hinze@icloud.com" == (session?.user?.email)}</p>
+
+  <script>
+import { signOut } from "auth-astro/client"
+
+      const { signIn } = await import("auth-astro/client")
+
+      document.querySelector("#login").onclick = () => signIn("github")
+      document.querySelector("#logout").onclick = () => signOut()
+  </script>
+</Layout>

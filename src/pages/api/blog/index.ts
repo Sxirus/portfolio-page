@@ -7,8 +7,8 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const title = formData.get("title")?.toString();
     const date = formData.get("date")?.toString();
     const text = formData.get("text")?.toString();
-    const tags = formData.get("tags")?.toString();
-    const result = tags?.split(",")
+    const tagString = formData.get("tags")?.toString();
+    const tags = tagString?.split(",")
         .map(str => str.trim())
         .filter(str => str.length > 0);
 
@@ -17,7 +17,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const friendsRef = db.collection("blog");
     await friendsRef.add({
         date,
-        result,
+        tags,
         text,
         title
     });
