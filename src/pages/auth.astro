@@ -9,16 +9,14 @@ if ("jakob.hinze@icloud.com" == (session?.user?.email)) {
 
 ---
 <Layout>
-  <button id="login">Login with GitHub</button>
-  <button id="logout">Logout</button>
-  <p>{"jakob.hinze@icloud.com" == (session?.user?.email)}</p>
+  <div class="flex flex-col items-center space-y-4 mt-50">
+    <h1 class="flex justify-center text-5xl">LOGIN</h1>
+    <button id="login" class="bg-black flex justify-center items-center rounded-3xl aspect-square w-24 h-24"><img src="github.png" alt="GITHUB" class="w-4/5 h-4/5"></button>
+  </div>
+  
 
   <script>
-import { signOut } from "auth-astro/client"
-
       const { signIn } = await import("auth-astro/client")
-
       document.querySelector("#login").onclick = () => signIn("github")
-      document.querySelector("#logout").onclick = () => signOut()
   </script>
 </Layout>

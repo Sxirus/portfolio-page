@@ -1,4 +1,5 @@
 ---
+import { GlassCard } from "@/components/ui/glass-card";
 import Layout from "@/layouts/Layout.astro"
 import { getSession } from 'auth-astro/server';
 const session = await getSession(Astro.request);
@@ -11,17 +12,33 @@ if ("jakob.hinze@icloud.com" != (session?.user?.email)) {
   return Astro.redirect("/auth")
 }
 
+const inputField = "outline outline-1 outline-solid m-2 rounded-2xl p-2 w-64 min-h-[40px] resize-none whitespace-pre-wrap break-words"
+
 ---
 <Layout>
-    <form method="post" action="/api/blog">
-        <label for="title">Title</label>
-        <input type="text" id="title" name="title">
-        <label for="text">Text</label>
-        <input type="text" id="text" name="text">
-        <label for="text">Date</label>
-        <input type="text" id="date" name="date">
-        <label for="text">Tags</label>
-        <input type="text" id="tags" name="tags">
-        <button type="submit">add</button>
+    <form method="post" action="/api/blog" class="flex flex-col items-center m-5">
+      <GlassCard client:only="react" className="w-1/5 mt-20">
+        <div class="flex items-center flex-col m-5">
+          <label for="title">Title</label>
+          <input type="text" id="title" name="title" class={inputField} placeholder="Title">
+          <label for="text">Text</label>
+          <textarea
+            id="text"
+            name="text"
+            class="outline-1 outline-solid m-2 rounded-2xl p-2 w-64 min-h-[40px] resize-none whitespace-pre-wrap break-words"
+            placeholder="Schreibe den text hier..."
+            ></textarea>
+          <label for="text">Date</label>
+          <input type="text" id="date" name="date" class={inputField} placeholder="xx-xx-xxxx">
+          <label for="text">Tags</label>
+          <input type="text" id="tags" name="tags" class={inputField} placeholder="x,x,x">
+        </div>
+      </GlassCard>
+        <button type="submit" class="bg-green-500 rounded-3xl w-1/15 mt-5 outline-3 outline-green-600">Add</button>
     </form>
+    <button id="logout" class="bg-gray-600 text-white rounded-3xl w-1/20 fixed top-10 right-10 outline-3 outline-gray-700">LogOut</button>
+    <script>
+      import { signOut } from "auth-astro/client"
+      document.querySelector("#logout").onclick = () => signOut()
+    </script>
 </Layout>

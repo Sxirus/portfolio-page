@@ -107,11 +107,11 @@ export default function HeroSection() {
             whileTap={{ scale: 0.95 }}
           >
             <div className="relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
               <img
                 src="/Me.jpg"
                 alt="Profile"
-                className="w-48 md:w-60 rounded-full relative ring-2 ring-purple-500/50"
+                className="w-48 md:w-60 rounded-full relative ring-2 ring-emerald-500/50"
                 style={{ objectFit: "cover" }}
               />
             </div>
@@ -119,9 +119,9 @@ export default function HeroSection() {
         </motion.div>
 
         <MotionWrapper>
-          <div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 backdrop-blur-sm backdrop-filter p-4 rounded-lg border border-purple-500/20 dark:border-purple-500/10 shadow-sm">
+          <div className="bg-gradient-to-r from-emerald-500/10 to-green-500/10 backdrop-blur-sm backdrop-filter p-4 rounded-lg border border-emerald-500/20 dark:border-emerald-500/10 shadow-sm">
             <p className="text-muted-foreground pl-4 py-2 mb-4 relative">
-              <span className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full"></span>
+              <span className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-emerald-500 to-green-500 rounded-full"></span>
               🚀 Passionate software engineer with a versatile skill set
               spanning multiple domains. I thrive on solving complex challenges
               across different platforms and environments, adapting quickly to

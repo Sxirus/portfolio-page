@@ -53,7 +53,7 @@ export const skills = {
 export const projects = [
   {
     title: "My Portfolio Page",
-    github: "https://github.com/rishikesh2003/my-portfolio",
+    github: "https://github.com/Sxirus/portfolio-page",
     description: [
       "Portfolio Page build in an internship at Toolport"
     ],
